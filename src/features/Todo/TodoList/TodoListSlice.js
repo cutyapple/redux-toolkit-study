@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-let todoId = 1;
+let todoId = 3;
 
 const name = "TODOLIST";
 const initialState = {
@@ -19,7 +19,7 @@ const initialState = {
 };
 const reducers = {
   addTodo: {
-    prepare: (title) => ({
+    prepare: ({ title }) => ({
       payload: {
         title,
         id: todoId++,
