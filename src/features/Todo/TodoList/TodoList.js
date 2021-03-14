@@ -1,14 +1,14 @@
 import React from "react";
 import * as S from "./style";
 
-import TodoItem from "../TodoItem/TodoItem";
+import TodoItemContainer from "../TodoItem/TodoItemContainer";
 
 const TodoList = ({ todoList }) => {
   return (
     <S.Container>
       <ul>
         {todoList.map((todo) => (
-          <TodoItem key={todo.id} {...todo} />
+          <TodoItemContainer key={todo.id} {...todo} />
         ))}
       </ul>
     </S.Container>
