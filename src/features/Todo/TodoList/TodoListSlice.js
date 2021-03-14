@@ -31,10 +31,38 @@ const reducers = {
       state.todoList.push(payload);
     },
   },
-  removeTodo: (state, { payload }) => {
+  toggleDone: (state, { payload }) => {
+    const { todoList } = state;
     const { id } = payload;
-    return state.todoList.splice(
-      state.findIndex((todo) => todo.id === id),
+
+    const targetIdx = todoList.findIndex((todo) => todo.id === id);
+
+    todoList[targetIdx].done = !todoList[targetIdx].done;
+  },
+  modifyTodo: {
+    prepare: ({ title, id, done }) => ({
+      payload: {
+        title,
+        id,
+        done,
+      },
+    }),
+    reducer: (state, { payload }) => {
+      const { todoList } = state;
+      const { id } = payload;
+      console.log(payload);
+
+      const targetIdx = todoList.findIndex((todo) => todo.id === id);
+
+      todoList[targetIdx] = payload;
+    },
+  },
+  removeTodo: (state, { payload }) => {
+    const { todoList } = state;
+    const { id } = payload;
+
+    todoList.splice(
+      todoList.findIndex((todo) => todo.id === id),
       1
     );
   },
@@ -46,5 +74,10 @@ const todoSlice = createSlice({
   reducers,
 });
 
-export const { addTodo, removeTodo } = todoSlice.actions;
+export const {
+  addTodo,
+  toggleDone,
+  modifyTodo,
+  removeTodo,
+} = todoSlice.actions;
 export default todoSlice.reducer;
