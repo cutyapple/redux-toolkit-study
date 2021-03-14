@@ -5,8 +5,8 @@ export const Container = styled.div`
 `;
 
 export const DefaultBtn = styled.button`
-  width: 14px;
-  height: 14px;
+  width: 40px;
+  height: 40px;
   outline: none;
   border: none;
   border-radius: 50%;
@@ -26,6 +26,12 @@ export const TodoText = styled.p`
   text-decoration: ${(props) => props.done && "line-through"};
 `;
 
-export const DoneCheckBtn = styled(DefaultBtn)``;
-export const ModifyBtn = styled(DefaultBtn)``;
-export const DeleteBtn = styled(DefaultBtn)``;
+export const DoneCheckBtn = styled(DefaultBtn)`
+  background: yellowgreen;
+`;
+export const ModifyBtn = styled(DefaultBtn)`
+  background: skyblue;
+`;
+export const DeleteBtn = styled(DefaultBtn)`
+  background: tomato;
+`;
